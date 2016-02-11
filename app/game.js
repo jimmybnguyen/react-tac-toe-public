@@ -2,8 +2,11 @@
 
 class TicTacToe {
     constructor() {
-        this._gameBoard = [1,0,0,0,1,0,0,0,1];
+        this._gameBoard = [0,0,0,0,0,0,0,0,0];
         this._currentPlayer = 1;
+        this._xWins = 0;
+        this._yWins = 0;
+        this._ties = 0;
     }
     
     get gameBoard() {
@@ -13,9 +16,21 @@ class TicTacToe {
     get currentPlayer() {
         return this._currentPlayer;   
     }
+    
+    get xWins() {
+        return this._xWins;   
+    }
+    
+    get yWins() {
+        return this._yWins   
+    }
+    
+    get ties() {
+        return this._ties;   
+    }
 
     reset() {
-        this.gameBoard = [];
+        this.gameBoard = [0,0,0,0,0,0,0,0,0];
     }
     
     currentPlayer() {
@@ -110,3 +125,5 @@ class TicTacToe {
 }
 var test = new TicTacToe();
 console.log(test.gameWon());
+
+module.exports.TicTacToe = TicTacToe;

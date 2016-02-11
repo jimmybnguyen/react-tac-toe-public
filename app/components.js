@@ -3,10 +3,12 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var HelloMessage = React.createClass({
-  render: function() {
-    return <h1>Hello World</h1>;
-  }
+var title = React.createClass({
+    render: function() {
+        return(
+            
+        );
+    }
 });
 
 var InformationBox = React.createClass({displayName: 'InformationBox',
@@ -18,5 +20,3 @@ var InformationBox = React.createClass({displayName: 'InformationBox',
     );
   }
 });
-//ReactDOM.render(<HelloMessage />, document.getElementById('content'));
-ReactDOM.render( React.createElement(InformationBox, null), document.getElementById('content'));
