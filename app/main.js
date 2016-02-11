@@ -18,5 +18,6 @@ var InformationBox = React.createClass({displayName: 'InformationBox',
     );
   }
 });
+
 //ReactDOM.render(<HelloMessage />, document.getElementById('content'));
 ReactDOM.render( React.createElement(InformationBox, null), document.getElementById('content'));

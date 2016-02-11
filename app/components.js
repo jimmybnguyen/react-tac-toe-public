@@ -20,3 +20,7 @@ var InformationBox = React.createClass({displayName: 'InformationBox',
     );
   }
 });
+
+var square = React.createClass({
+
+});
