@@ -23,7 +23,8 @@ The below questions should be answered (in detail!) regarding your submission!
 
 ##### 5. Did you receive help from any other sources (classmates, etc)? If so, please list who (be specific!). #####
 > Answer goes here!
-
+https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBhLZx_5C-jqECBE4HIID_k
+https://www.youtube.com/playlist?list=PLLnpHn493BHFfs3Uj5tvx17mXk4B4ws4p
 
 ##### 6. Did you encounter any problems in this assignment we should warn students about in the future? How can we make the assignment better? #####
 > Answer goes here!

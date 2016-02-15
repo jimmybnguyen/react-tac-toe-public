@@ -2,11 +2,12 @@
 
 class TicTacToe {
     constructor() {
-        this._gameBoard = [1,1,1,0,0,0,0,0,0];
-        this._currentPlayer = 1;
+        this._gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " ",];
+        this._currentPlayer = 'X';
         this._xWins = 0;
         this._yWins = 0;
         this._ties = 0;
+        this._gameOver = false;
     }
     
     get gameBoard() {
@@ -14,7 +15,11 @@ class TicTacToe {
     }
     
     get currentPlayer() {
-        return this._currentPlayer;   
+        if (this._gameOver) {
+            return undefined;   
+        } else {
+            return this._currentPlayer;
+        }
     }
     
     get xWins() {
@@ -28,48 +33,79 @@ class TicTacToe {
     get ties() {
         return this._ties;   
     }
+    
+    get gameOver() {
+        return this._gameOver;   
+    }
 
     reset() {
-        this.gameBoard = [0,0,0,0,0,0,0,0,0];
+        this._gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " ",];
     }
     
     changePlayer() {
-        if (this._currentPlayer == 1) {
-            this._currentPlayer = 2;   
+        if (this._currentPlayer == 'X') {
+            this._currentPlayer = 'Y';   
         } else {
-            this._currentPlayer = 1;   
+            this._currentPlayer = 'X';   
         }
     }
     
     move() {
-        
+        this.changePlayer();
     }
     
     gameWon() {
-        if (this._gameBoard[0] == '1' && this._gameBoard[1] == '1' && this._gameBoard[2] == '1' ||
-            this._gameBoard[3] == '1' && this._gameBoard[4] == '1' && this._gameBoard[5] == '1' ||
-            this._gameBoard[6] == '1' && this._gameBoard[7] == '1' && this._gameBoard[8] == '1' ||
-            this._gameBoard[0] == '1' && this._gameBoard[3] == '1' && this._gameBoard[6] == '1' ||
-            this._gameBoard[1] == '1' && this._gameBoard[4] == '1' && this._gameBoard[7] == '1' ||
-            this._gameBoard[2] == '1' && this._gameBoard[5] == '1' && this._gameBoard[8] == '1' ||
-            this._gameBoard[0] == '1' && this._gameBoard[4] == '1' && this._gameBoard[8] == '1' ||
-            this._gameBoard[2] == '1' && this._gameBoard[4] == '1' && this._gameBoard[6] == '1') {
-            console.log('winner:1');
-        } else if (this._gameBoard[0] == '2' && this._gameBoard[1] == '2' && this._gameBoard[2] == '2' ||
-            this._gameBoard[3] == '2' && this._gameBoard[4] == '2' && this._gameBoard[5] == '2' ||
-            this._gameBoard[6] == '2' && this._gameBoard[7] == '2' && this._gameBoard[8] == '2' ||
-            this._gameBoard[0] == '2' && this._gameBoard[3] == '2' && this._gameBoard[6] == '2' ||
-            this._gameBoard[1] == '2' && this._gameBoard[4] == '2' && this._gameBoard[7] == '2' ||
-            this._gameBoard[2] == '2' && this._gameBoard[5] == '2' && this._gameBoard[8] == '2' ||
-            this._gameBoard[0] == '2' && this._gameBoard[4] == '2' && this._gameBoard[8] == '2' ||
-            this._gameBoard[2] == '2' && this._gameBoard[4] == '2' && this._gameBoard[6] == '2') {
-            console.log('winner:2');
+        if (this._gameBoard[0] == this._currentPlayer && this._gameBoard[1] == this._currentPlayer && this._gameBoard[2] == this._currentPlayer ||
+            this._gameBoard[3] == this._currentPlayer && this._gameBoard[4] == this._currentPlayer && this._gameBoard[5] == this._currentPlayer ||
+            this._gameBoard[6] == this._currentPlayer && this._gameBoard[7] == this._currentPlayer && this._gameBoard[8] == this._currentPlayer ||
+            this._gameBoard[0] == this._currentPlayer && this._gameBoard[3] == this._currentPlayer && this._gameBoard[6] == this._currentPlayer ||
+            this._gameBoard[1] == this._currentPlayer && this._gameBoard[4] == this._currentPlayer && this._gameBoard[7] == this._currentPlayer ||
+            this._gameBoard[2] == this._currentPlayer && this._gameBoard[5] == this._currentPlayer && this._gameBoard[8] == this._currentPlayer ||
+            this._gameBoard[0] == this._currentPlayer && this._gameBoard[4] == this._currentPlayer && this._gameBoard[8] == this._currentPlayer ||
+            this._gameBoard[2] == this._currentPlayer && this._gameBoard[4] == this._currentPlayer && this._gameBoard[6] == this._currentPlayer) {
+            console.log('winner: ' + this._currentPlayer);
+            this._gameOver = true;
+            if (this._currentPlayer == 'X') {
+                this._xWins += 1;
+            } else {
+                this._yWins += 1;   
+            }
+        } else if (this._gameBoard.length == 9) {
+            console.log('tie');
+            this._gameOver = true;
+            this._ties += 1;
+        } 
+    }
+    
+    /*
+    gameWon() {
+        if (this._gameBoard[0] == 'X' && this._gameBoard[1] == 'X' && this._gameBoard[2] == 'X' ||
+            this._gameBoard[3] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[5] == 'X' ||
+            this._gameBoard[6] == 'X' && this._gameBoard[7] == 'X' && this._gameBoard[8] == 'X' ||
+            this._gameBoard[0] == 'X' && this._gameBoard[3] == 'X' && this._gameBoard[6] == 'X' ||
+            this._gameBoard[1] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[7] == 'X' ||
+            this._gameBoard[2] == 'X' && this._gameBoard[5] == 'X' && this._gameBoard[8] == 'X' ||
+            this._gameBoard[0] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[8] == 'X' ||
+            this._gameBoard[2] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[6] == 'X') {
+            console.log('winner:X');
+        } else if (this._gameBoard[0] == 'Y' && this._gameBoard[1] == 'Y' && this._gameBoard[2] == 'Y' ||
+            this._gameBoard[3] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[5] == 'Y' ||
+            this._gameBoard[6] == 'Y' && this._gameBoard[7] == 'Y' && this._gameBoard[8] == 'Y' ||
+            this._gameBoard[0] == 'Y' && this._gameBoard[3] == 'Y' && this._gameBoard[6] == 'Y' ||
+            this._gameBoard[1] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[7] == 'Y' ||
+            this._gameBoard[2] == 'Y' && this._gameBoard[5] == 'Y' && this._gameBoard[8] == 'Y' ||
+            this._gameBoard[0] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[8] == 'Y' ||
+            this._gameBoard[2] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[6] == 'Y') {
+            console.log('winner:Y');
         } else if (this._gameBoard.length == 9) {
             console.log('tie');
         } 
-    }
+    }*/
 }
+/*
 var test = new TicTacToe();
-console.log(test.gameWon());
+console.log(test.currentPlayer);
+test.changePlayer();
+console.log(test.currentPlayer);*/
 
 module.exports.TicTacToe = TicTacToe;
