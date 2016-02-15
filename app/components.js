@@ -4,6 +4,10 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var TicTacToe = require('./game.js');
 
+var gameModule = new TicTacToe.TicTacToe();
+var currentPlayer = gameModule.currentPlayer;
+var score = "Score: X: " + gameModule.xWins + ", O: " + gameModule.yWins + ", Ties: " + gameModule.ties;
+
 var Title = React.createClass({
     render: function() {
         return(<h1>React Tac Toe</h1>);
@@ -14,9 +18,9 @@ var Title = React.createClass({
 var InformationBox = React.createClass({displayName: 'InformationBox',
   render: function() {
     return (
-      React.createElement('div', {className: "InformationBox"},
-        "I am a InformationBox."
-      )
+      <div>
+        Your turn, {currentPlayer}!
+     </div>
     );
   }
 });
@@ -31,12 +35,31 @@ var Square = React.createClass({
     }
 });
 
+var Grid = React.createClass({
+    handleClick: function(){
+        console.log(gameModule.currentPlayer); // test code
+        gameModule.increaseScore("X");
+        console.log(gameModule.xWins);
+    },
+
+    render: function() {
+        return(
+            <button onClick = {this.handleClick}>Click me!</button>
+        )
+    }
+});
+        
 var ScoreBoard = React.createClass({
     render: function() {
-        
+        return(
+            <div>
+                {score}
+            </div>
+        )
     }
 });
 
+/*
 var Board = React.createClass({
     getInitialState: function() {
         return {
@@ -69,10 +92,10 @@ var Board = React.createClass({
     }
 
 });
+*/
 
-module.exports;
-/*
-module.exports = InformationBox;
-module.exports = Square;
-module.exports = ScoreBoard;
-module.exports = Board;*/
+module.exports.Title = Title;
+module.exports.InformationBox = InformationBox;
+module.exports.Square = Square;
+module.exports.Grid = Grid;
+module.exports.ScoreBoard = ScoreBoard;

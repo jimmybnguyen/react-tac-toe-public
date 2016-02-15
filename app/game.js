@@ -37,7 +37,14 @@ class TicTacToe {
     get gameOver() {
         return this._gameOver;   
     }
-
+    
+    increaseScore(player) {
+        if (player.toUpperCase() == "X") {
+            this._xWins += 1;    
+        } else if (player.toUpperCase() == "Y") {
+            this._yWins += 1;   
+        }
+    }
     reset() {
         this._gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " ",];
     }
@@ -102,10 +109,10 @@ class TicTacToe {
         } 
     }*/
 }
-/*
+
 var test = new TicTacToe();
-console.log(test.currentPlayer);
-test.changePlayer();
-console.log(test.currentPlayer);*/
+console.log(test.xWins);
+test.increaseScore("X");
+console.log(test.xWins);
 
 module.exports.TicTacToe = TicTacToe;
