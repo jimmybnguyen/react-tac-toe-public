@@ -2,7 +2,7 @@
 
 class TicTacToe {
     constructor() {
-        this._gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " ",];
+        this._gameBoard = ["X", "", "", "", "", "", "", "", "",];
         this._currentPlayer = 'X';
         this._xWins = 0;
         this._yWins = 0;
@@ -46,7 +46,7 @@ class TicTacToe {
         }
     }
     reset() {
-        this._gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " ",];
+        this._gameBoard = ["", "", "", "", "", "", "", "", "",];
     }
     
     changePlayer() {
@@ -111,7 +111,7 @@ class TicTacToe {
 }
 
 var test = new TicTacToe();
-console.log(test.xWins);
+console.log(test.gameBoard[0]);
 test.increaseScore("X");
 console.log(test.xWins);
 

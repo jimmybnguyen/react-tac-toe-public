@@ -2,25 +2,28 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var TicTacToe = require('./game.js');
 var Components = require('./components.js');
+var TicTacToe = require('./game.js');
 
 var gameModule = new TicTacToe.TicTacToe();
 
 var Game = React.createClass({
+    
+    handleClick: function(){
+        ReactDOM.render(<Game />, document.getElementById('content'));
+    },
+    
     render: function() {
         return(
             <div>
                 <Components.Title />
-                <Components.InformationBox />
-                <Components.Grid />
-                <Components.ScoreBoard />
+                <Components.InformationBox currentPlayer = {gameModule.currentPlayer}/>
+                <Components.Grid gameBoard = {gameModule.gameBoard}/>
+                <Components.ScoreBoard xWins = {gameModule.xWins} yWins = {gameModule.yWins} ties = {gameModule.ties} />
+                <button onClick = {this.handleClick}>Re-render</button>
             </div>
         );
     }
 });
 
-//ReactDOM.render(<HelloMessage />, document.getElementById('content'));
-//ReactDOM.render( React.createElement(InformationBox, null), document.getElementById('content'));
-ReactDOM.render(<Game />, document.getElementById('content')
-);
+ReactDOM.render(<Game />, document.getElementById('content'));

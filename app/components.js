@@ -4,10 +4,6 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var TicTacToe = require('./game.js');
 
-var gameModule = new TicTacToe.TicTacToe();
-var currentPlayer = gameModule.currentPlayer;
-var score = "Score: X: " + gameModule.xWins + ", O: " + gameModule.yWins + ", Ties: " + gameModule.ties;
-
 var Title = React.createClass({
     render: function() {
         return(<h1>React Tac Toe</h1>);
@@ -19,32 +15,52 @@ var InformationBox = React.createClass({displayName: 'InformationBox',
   render: function() {
     return (
       <div>
-        Your turn, {currentPlayer}!
+        <h3>Your turn, {this.props.currentPlayer}!</h3>
      </div>
     );
   }
 });
-
+        
 var Square = React.createClass({
+    
     handleClick: function(){
 
     },
+    
+    render: function(){
 
-    render: function() {
-        <button onClick = {handleClick}>Click me!</button>
-    }
+      return (
+          <div>hi</div>
+      );
+    } 
 });
-
+        
 var Grid = React.createClass({
-    handleClick: function(){
-        console.log(gameModule.currentPlayer); // test code
-        gameModule.increaseScore("X");
-        console.log(gameModule.xWins);
+                             
+    handleClick: function() { 
+
     },
 
     render: function() {
+
         return(
-            <button onClick = {this.handleClick}>Click me!</button>
+           <table>
+                <tr>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[0]}</button></td>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[1]}</button></td>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[2]}</button></td>
+                </tr>
+                <tr>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[3]}</button></td>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[4]}</button></td>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[5]}</button></td>
+                </tr>
+                <tr>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[6]}</button></td>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[7]}</button></td>
+                    <td><button onClick = {this.handleClick}>{this.props.gameBoard[8]}</button></td>
+                </tr>
+            </table>  
         )
     }
 });
@@ -53,7 +69,7 @@ var ScoreBoard = React.createClass({
     render: function() {
         return(
             <div>
-                {score}
+                <strong>Score</strong> X: {this.props.xWins} Y: {this.props.yWins} Ties: {this.props.ties};
             </div>
         )
     }
