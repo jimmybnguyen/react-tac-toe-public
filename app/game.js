@@ -45,8 +45,11 @@ class TicTacToe {
             this._yWins += 1;   
         }
     }
-    reset() {
+    
+    resetBoard() {
         this._gameBoard = ["", "", "", "", "", "", "", "", "",];
+        this._currentPlayer = 'X';
+        this._gameOver = false;
     }
     
     changePlayer() {
@@ -58,7 +61,10 @@ class TicTacToe {
     }
     
     move() {
-        this.changePlayer();
+        this.gameWon(); //checks the boardstate
+        if (!this.gameOver) {
+            this.changePlayer();
+        }
     }
     
     gameWon() {
@@ -77,42 +83,25 @@ class TicTacToe {
             } else {
                 this._yWins += 1;   
             }
-        } else if (this._gameBoard.length == 9) {
-            console.log('tie');
-            this._gameOver = true;
-            this._ties += 1;
+        } else {
+            var isTie = true;
+            for (var i = 0; i < this.gameBoard.length; i++) {
+                if (this.gameBoard[i] == "") {
+                    isTie = false;   
+                }
+            }
+            if (isTie) {
+                console.log('tie');
+                this._gameOver = true;
+                this._ties += 1;
+            }
         } 
     }
-    
-    /*
-    gameWon() {
-        if (this._gameBoard[0] == 'X' && this._gameBoard[1] == 'X' && this._gameBoard[2] == 'X' ||
-            this._gameBoard[3] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[5] == 'X' ||
-            this._gameBoard[6] == 'X' && this._gameBoard[7] == 'X' && this._gameBoard[8] == 'X' ||
-            this._gameBoard[0] == 'X' && this._gameBoard[3] == 'X' && this._gameBoard[6] == 'X' ||
-            this._gameBoard[1] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[7] == 'X' ||
-            this._gameBoard[2] == 'X' && this._gameBoard[5] == 'X' && this._gameBoard[8] == 'X' ||
-            this._gameBoard[0] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[8] == 'X' ||
-            this._gameBoard[2] == 'X' && this._gameBoard[4] == 'X' && this._gameBoard[6] == 'X') {
-            console.log('winner:X');
-        } else if (this._gameBoard[0] == 'Y' && this._gameBoard[1] == 'Y' && this._gameBoard[2] == 'Y' ||
-            this._gameBoard[3] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[5] == 'Y' ||
-            this._gameBoard[6] == 'Y' && this._gameBoard[7] == 'Y' && this._gameBoard[8] == 'Y' ||
-            this._gameBoard[0] == 'Y' && this._gameBoard[3] == 'Y' && this._gameBoard[6] == 'Y' ||
-            this._gameBoard[1] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[7] == 'Y' ||
-            this._gameBoard[2] == 'Y' && this._gameBoard[5] == 'Y' && this._gameBoard[8] == 'Y' ||
-            this._gameBoard[0] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[8] == 'Y' ||
-            this._gameBoard[2] == 'Y' && this._gameBoard[4] == 'Y' && this._gameBoard[6] == 'Y') {
-            console.log('winner:Y');
-        } else if (this._gameBoard.length == 9) {
-            console.log('tie');
-        } 
-    }*/
 }
 
 var test = new TicTacToe();
-console.log(test.gameBoard[0]);
-test.increaseScore("X");
+test.move();
+console.log(test.currentPlayer);
 console.log(test.xWins);
 
 module.exports.TicTacToe = TicTacToe;
