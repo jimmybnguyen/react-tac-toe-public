@@ -49,6 +49,14 @@ class TicTacToe {
         }
     }
     
+    displayTitle() {
+        if (!this._gameOver) {
+            return ("Your turn, " + this._currentPlayer + "!");   
+        } else {
+            return("Winner: " + this._currentPlayer + "!");     
+        }
+    }
+    
     resetBoard() {
         this._gameBoard = ["", "", "", "", "", "", "", "", "",];
         this._currentPlayer = 'X';
@@ -65,12 +73,16 @@ class TicTacToe {
     }
     
     move(id) {
-        if(this._gameBoard[id] == "") {
-            this._gameBoard[id] = this._currentPlayer;  
-            this.gameWon();
-            this.changePlayer();
-        } else {
-            //cannot move here 
+        if (!this._gameOver) {
+            if(this._gameBoard[id] == "") {
+                this._gameBoard[id] = this._currentPlayer;  
+                this.gameWon();
+                if (!this._gameOver) {
+                    this.changePlayer();
+                }
+            } else {
+                //cannot move here 
+            }
         }
     }
     
@@ -83,7 +95,6 @@ class TicTacToe {
             this._gameBoard[2] == this._currentPlayer && this._gameBoard[5] == this._currentPlayer && this._gameBoard[8] == this._currentPlayer ||
             this._gameBoard[0] == this._currentPlayer && this._gameBoard[4] == this._currentPlayer && this._gameBoard[8] == this._currentPlayer ||
             this._gameBoard[2] == this._currentPlayer && this._gameBoard[4] == this._currentPlayer && this._gameBoard[6] == this._currentPlayer) {
-            console.log('winner: ' + this._currentPlayer);
             this._gameOver = true;
             if (this._currentPlayer == 'X') {
                 this._xWins += 1;
@@ -97,18 +108,12 @@ class TicTacToe {
                     isTie = false;   
                 }
             }
-            if (isTie) {
-                console.log('tie');
+            if (isTie) {x
                 this._gameOver = true;
                 this._ties += 1;
             }
         } 
     }
 }
-
-var test = new TicTacToe();
-test.move();
-console.log(test.currentPlayer);
-console.log(test.xWins);
 
 module.exports.TicTacToe = TicTacToe;

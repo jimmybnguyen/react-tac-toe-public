@@ -2,17 +2,16 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var TicTacToe = require('./game.js');
-var Controller = require('./controller.js');
 
 var Game = React.createClass({
     render: function() {
         return(
             <div>
-                <Title />
-                <InformationBox gameModel={this.props.model}/>
-                <Grid gameModel={this.props.model} ctrl={this.props.controller}/>
-                <ScoreBoard gameModel={this.props.model}/>
+                <Title gameModel={this.props.model} />
+                <InformationBox gameModel={this.props.model} />
+                <Grid gameModel={this.props.model} ctrl={this.props.controller} />
+                <ScoreBoard gameModel={this.props.model} />
+                <ResetButton gameModel={this.props.model} ctrl={this.props.controller} />
             </div>
         )
     }
@@ -27,7 +26,7 @@ var Title = React.createClass({
 var InformationBox = React.createClass({displayName: 'InformationBox',
   render: function() {
     return (
-        <h3>Your turn, {this.props.gameModel.currentPlayer}!</h3>
+        <h3>{this.props.gameModel.displayTitle()}</h3>
     );
   }
 });
@@ -80,9 +79,20 @@ var ScoreBoard = React.createClass({
     }
 });
 
+var ResetButton = React.createClass({
+    
+    handleClick: function() {
+        {this.props.gameModel.resetBoard()};
+        {this.props.ctrl.render()};
+    },
+    
+    render: function() {
+        return(
+            <div>
+                <button onClick={this.handleClick}>Reset </button>
+            </div>
+        )
+    }
+});
+
 module.exports.Game = Game;
-module.exports.Title = Title;
-module.exports.InformationBox = InformationBox;
-module.exports.Square = Square;
-module.exports.Grid = Grid;
-module.exports.ScoreBoard = ScoreBoard;
