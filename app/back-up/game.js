@@ -37,9 +37,6 @@ class TicTacToe {
     get gameOver() {
         return this._gameOver;   
     }
-    getPiece(index) {
-        return this._gameBoard[index];
-    }
     
     increaseScore(player) {
         if (player.toUpperCase() == "X") {

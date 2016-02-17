@@ -6,7 +6,7 @@ The below questions should be answered (in detail!) regarding your submission!
 
 
 ##### 1. Does using a Model-View-Controller architecture make it easier to change your game in the future? How many places would you need to make changes to your code to make this a 5x5 game of Tic-Tac-Toe?
-> Answer goes here!
+> Using a MVC architecture does make it easier to change my game in the future. To have a 5x5 game of Tic-Tac-Toe, I only need to make changes in the module, since the view uses the data in module to generate the components, and the controller 
 
 
 ##### 2. Why did I say that an `Array` is the best data structure to represent the game's grid of cells? Why not a 2D-array (Array of Arrays), or an Object, or a Linked-List, or a Tree? 
@@ -18,7 +18,7 @@ The below questions should be answered (in detail!) regarding your submission!
 
 
 ##### 4. Approximately how many hours did it take you to complete this assignment? #####
-> Answer goes here!
+> It took me about 30 hours to complete this assignment. 
 
 
 ##### 5. Did you receive help from any other sources (classmates, etc)? If so, please list who (be specific!). #####

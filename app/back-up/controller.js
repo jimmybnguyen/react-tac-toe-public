@@ -5,6 +5,9 @@ var ReactDOM = require('react-dom');
 var TicTacToe = require('./game.js');
 var Components = require('./components.js');
 
+//var gameModel = new TicTacToe.TicTacToe(); 
+//var gameView = new Components.Components(); 
+
 class Controller {
     constructor(model, view) {
         this._gameModel = model;
@@ -13,12 +16,10 @@ class Controller {
     
     handleClick(clickedId) {
         this._gameModel.move(clickedId);
-        ReactDOM.render(<this._gameView model={this._gameModel} />, document.getElementById('content')); 
+        ReactDOM.render(<something />, document.getElementById('content')); 
     }
     
     render() {
-        ReactDOM.render(<this._gameView model={this._gameModel} />, document.getElementById('content'));  
+        ReactDOM.render(<something />, document.getElementById('content'));  
     }
 }
-                        
-module.exports.Controller = Controller;

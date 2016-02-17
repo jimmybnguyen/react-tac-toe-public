@@ -5,18 +5,11 @@ var ReactDOM = require('react-dom');
 var TicTacToe = require('./game.js');
 var Controller = require('./controller.js');
     
-var Components = React.createClass({
+var Components {
     render: function() {
-        return(
-            <div>
-                <Title />
-                <InformationBox />
-                <Grid />
-                <ScoreBoard />
-            </div>
-        )
+        <div>
     }
-});
+}
 
 var Title = React.createClass({
     render: function() {
@@ -27,7 +20,9 @@ var Title = React.createClass({
 var InformationBox = React.createClass({displayName: 'InformationBox',
   render: function() {
     return (
-        <h3>Your turn, !</h3>
+      <div>
+        <h3>Your turn, {TicTacToe.currentPlayer}!</h3>
+     </div>
     );
   }
 });
@@ -35,12 +30,12 @@ var InformationBox = React.createClass({displayName: 'InformationBox',
 var Square = React.createClass({
 
     handleClick: function() {
-        this.prop.controller.handleClick(this.props.id);
+        //Controller.handleClick({this.props.my_id});
     },
 
     render: function() {
       return (
-          <button onClick={this.handleClick}>Data here</button>
+          <button onClick={this.handleClick}>{TicTacToe.getPiece({this.props.id})}</button>
       );
     } 
 });
@@ -73,12 +68,13 @@ var Grid = React.createClass({
 var ScoreBoard = React.createClass({
     render: function() {
         return(
-                <strong>Score:</strong>
+            <div>
+                <strong>Score</strong> X: {this.props.xWins} Y: {this.props.yWins} Ties: {this.props.ties}
+            </div>
         )
     }
 });
 
-module.exports.Components = Components;
 module.exports.Title = Title;
 module.exports.InformationBox = InformationBox;
 module.exports.Square = Square;
