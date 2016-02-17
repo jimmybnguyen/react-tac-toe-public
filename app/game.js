@@ -65,8 +65,8 @@ class TicTacToe {
     }
     
     move(id) {
-        if(this._gameBoard[this] == "") {
-            this._gameBoard[this] = this._currentPlayer;  
+        if(this._gameBoard[id] == "") {
+            this._gameBoard[id] = this._currentPlayer;  
             this.gameWon();
             this.changePlayer();
         } else {

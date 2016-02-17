@@ -5,19 +5,20 @@ var ReactDOM = require('react-dom');
 var TicTacToe = require('./game.js');
 var Components = require('./components.js');
 
+var Game = Components.Game //module.exports.Game in the components.js file
+
 class Controller {
-    constructor(model, view) {
+    constructor(model) {
         this._gameModel = model;
-        this._gameView = view;
     }
     
     handleClick(clickedId) {
         this._gameModel.move(clickedId);
-        ReactDOM.render(<this._gameView model={this._gameModel} />, document.getElementById('content')); 
+        this.render();
     }
     
     render() {
-        ReactDOM.render(<this._gameView model={this._gameModel} />, document.getElementById('content'));  
+        ReactDOM.render(<Game model={this._gameModel} controller={this}/>, document.getElementById('content'));  
     }
 }
                         
