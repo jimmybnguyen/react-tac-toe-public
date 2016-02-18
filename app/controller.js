@@ -10,7 +10,7 @@ class Controller {
     constructor(model) {
         this._gameModel = model;
     }
-    
+
     handleClick(clickedId) {
         this._gameModel.move(clickedId);
         this.render();

@@ -8,4 +8,5 @@ var Controller = require('./controller.js');
 var gameModel = new TicTacToe.TicTacToe(); 
 var gameController = new Controller.Controller(gameModel); 
 
+//starts the game
 gameController.render();

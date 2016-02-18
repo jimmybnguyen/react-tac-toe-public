@@ -3,7 +3,7 @@
 class TicTacToe {
     constructor() {
         this._gameBoard = ["", "", "", "", "", "", "", "", "",];
-        this._currentPlayer = 'X';
+        this._currentPlayer = 'X'; 
         this._xWins = 0;
         this._yWins = 0;
         this._ties = 0;
@@ -16,11 +16,7 @@ class TicTacToe {
     }
     
     get currentPlayer() {
-        if (this._gameOver) {
-            return undefined;   
-        } else {
-            return this._currentPlayer;
-        }
+        return this._currentPlayer;
     }
     
     get xWins() {
@@ -42,6 +38,10 @@ class TicTacToe {
         return this._gameBoard[index];
     }
     
+    /**
+    * Increases the win count of a player
+    * @param {String} player who to increase the win count for
+    */ 
     increaseScore(player) {
         if (player.toUpperCase() == "X") {
             this._xWins += 1;    
@@ -50,7 +50,11 @@ class TicTacToe {
         }
     }
     
-    displayTitle() {
+    /**
+    * Shows the current player, or the game result if the game is over
+    * @return {String} the current player if the game is not over, the game result otherwise
+    */ 
+    displayInfo() {
         if (!this._gameOver) {
             return ("Your turn, " + this._currentPlayer + "!");   
         } else {
@@ -62,13 +66,19 @@ class TicTacToe {
         }
     }
     
+    /**
+    * Starts the game over
+    */ 
     resetBoard() {
         this._gameBoard = ["", "", "", "", "", "", "", "", "",];
         this._gameOver = false;
         this._tiedGame = false;
-        this.changePlayer(); //alternate between players 
+        this.changePlayer(); //alternate between starting players 
     }
     
+    /**
+    * Switches the current player
+    */ 
     changePlayer() {
         if (this._currentPlayer == 'X') {
             this._currentPlayer = 'Y';   
@@ -77,20 +87,25 @@ class TicTacToe {
         }
     }
     
+    /**
+    * Adds in a piece onto the gameboard 
+    * @param {number} id where to add in the piece on the board
+    */ 
     move(id) {
         if (!this._gameOver) {
-            if(this._gameBoard[id] == "") {
+            if(this._gameBoard[id] == "") { //cannot add a piece to a place where there is already one
                 this._gameBoard[id] = this._currentPlayer;  
                 this.gameWon();
                 if (!this._gameOver) {
                     this.changePlayer();
                 }
-            } else {
-                //cannot move here 
-            }
+            } 
         }
     }
     
+    /**
+    * Checks to see if the game is over 
+    */ 
     gameWon() {
         if (this._gameBoard[0] == this._currentPlayer && this._gameBoard[1] == this._currentPlayer && this._gameBoard[2] == this._currentPlayer ||
             this._gameBoard[3] == this._currentPlayer && this._gameBoard[4] == this._currentPlayer && this._gameBoard[5] == this._currentPlayer ||
@@ -107,6 +122,7 @@ class TicTacToe {
                 this._yWins += 1;   
             }
         }
+        //checks to see if the game is tied
         var isTie = true;
         for (var i = 0; i < this._gameBoard.length; i++) {
             if (this._gameBoard[i] == "") {

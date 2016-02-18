@@ -3,6 +3,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+/**
+* Represents all of the components in a game
+*/ 
 var Game = React.createClass({
     render: function() {
         return(
@@ -17,20 +20,29 @@ var Game = React.createClass({
     }
 });
 
+/**
+* The title of the game
+*/ 
 var Title = React.createClass({
     render: function() {
         return <h1>React Tac Toe</h1>
     }
 });
 
+/**
+* Displays the current player or game result
+*/ 
 var InformationBox = React.createClass({displayName: 'InformationBox',
   render: function() {
     return (
-        <h3>{this.props.gameModel.displayTitle()}</h3>
+        <h3>{this.props.gameModel.displayInfo()}</h3>
     );
   }
 });
 
+/**
+* Represents part of the grid in the game
+*/ 
 var Square = React.createClass({
 
     handleClick: function() {
@@ -44,6 +56,9 @@ var Square = React.createClass({
     } 
 });
 
+/**
+* Represents the tic-tac-toe grid
+*/ 
 var Grid = React.createClass({
 
     render: function() {
@@ -69,6 +84,9 @@ var Grid = React.createClass({
     }
 });
 
+/**
+* Displays the current score of the players
+*/ 
 var ScoreBoard = React.createClass({
     render: function() {
         return(
@@ -79,6 +97,9 @@ var ScoreBoard = React.createClass({
     }
 });
 
+/**
+* Starts the game over
+*/ 
 var ResetButton = React.createClass({
     
     handleClick: function() {
