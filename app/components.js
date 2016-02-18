@@ -51,7 +51,7 @@ var Square = React.createClass({
 
     render: function() {
       return (
-          <button onClick={this.handleClick}>{this.props.model.gameBoard[this.props.id]}</button>
+          <button id={this.props.id} onClick={this.handleClick}>{this.props.model.gameBoard[this.props.id]}</button>
       );
     } 
 });
@@ -110,7 +110,7 @@ var ResetButton = React.createClass({
     render: function() {
         return(
             <div>
-                <button onClick={this.handleClick}>Reset </button>
+                <button id="reset-button" onClick={this.handleClick}>Reset</button>
             </div>
         )
     }

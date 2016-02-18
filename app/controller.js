@@ -4,7 +4,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Components = require('./components.js');
 
-var Game = Components.Game //module.exports.Game in the components.js file
+var Game = Components.Game 
 
 class Controller {
     constructor(model) {

@@ -16,7 +16,11 @@ class TicTacToe {
     }
     
     get currentPlayer() {
-        return this._currentPlayer;
+        if (this._gameOver) {
+            return undefined;   
+        } else {
+            return this._currentPlayer;
+        }
     }
     
     get xWins() {
@@ -125,7 +129,7 @@ class TicTacToe {
         //checks to see if the game is tied
         var isTie = true;
         for (var i = 0; i < this._gameBoard.length; i++) {
-            if (this._gameBoard[i] == "") {
+            if (this._gameBoard[i] == "") { //there is an empty spot on the board
                 isTie = false;   
             }
         }

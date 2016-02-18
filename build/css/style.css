@@ -30,3 +30,18 @@ h1 {
 h3 {
     color: #393131;   
 }
+
+#reset-button {
+  width: 150px;
+  height: 90px;
+  font-size: 30px;
+  text-align: center;
+  background-color: #e694bd;
+  color: white;
+  border-style: solid;
+  font-family: Sans-serif; 
+}
+
+#reset-button:hover {
+  background: #a4627b;
+}
