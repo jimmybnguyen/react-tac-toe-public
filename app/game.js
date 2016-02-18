@@ -8,6 +8,7 @@ class TicTacToe {
         this._yWins = 0;
         this._ties = 0;
         this._gameOver = false;
+        this._tiedGame = false;
     }
     
     get gameBoard() {
@@ -53,13 +54,18 @@ class TicTacToe {
         if (!this._gameOver) {
             return ("Your turn, " + this._currentPlayer + "!");   
         } else {
-            return("Winner: " + this._currentPlayer + "!");     
+            if (this._tiedGame) {
+                return("No winner!");    
+            } else {
+                return("Winner: " + this._currentPlayer + "!");   
+            }
         }
     }
     
     resetBoard() {
         this._gameBoard = ["", "", "", "", "", "", "", "", "",];
         this._gameOver = false;
+        this._tiedGame = false;
         this.changePlayer(); //alternate between players 
     }
     
@@ -100,18 +106,18 @@ class TicTacToe {
             } else {
                 this._yWins += 1;   
             }
-        } else {
-            var isTie = true;
-            for (var i = 0; i < this.gameBoard.length; i++) {
-                if (this.gameBoard[i] == "") {
-                    isTie = false;   
-                }
+        }
+        var isTie = true;
+        for (var i = 0; i < this._gameBoard.length; i++) {
+            if (this._gameBoard[i] == "") {
+                isTie = false;   
             }
-            if (isTie) {x
-                this._gameOver = true;
-                this._ties += 1;
-            }
-        } 
+        }
+        if (isTie) {
+            this._gameOver = true;
+            this._ties += 1;
+        }
+        this._tiedGame = isTie;
     }
 }
 
