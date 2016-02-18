@@ -59,7 +59,6 @@ class TicTacToe {
     
     resetBoard() {
         this._gameBoard = ["", "", "", "", "", "", "", "", "",];
-        this._currentPlayer = 'X';
         this._gameOver = false;
         this.changePlayer(); //alternate between players 
     }
