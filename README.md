@@ -18,7 +18,7 @@ The below questions should be answered (in detail!) regarding your submission!
 
 
 ##### 4. Approximately how many hours did it take you to complete this assignment? #####
-> It took me about 30 hours to complete this assignment. 
+> It took me about 20-25 hours to complete this assignment. 
 
 
 ##### 5. Did you receive help from any other sources (classmates, etc)? If so, please list who (be specific!). #####
