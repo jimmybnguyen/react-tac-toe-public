@@ -1,5 +1,16 @@
 # React-Tac-Toe
 
+## Setup
+* Clone repo
+* Open command line
+
+```sh
+npm install
+npm run dev
+```
+* Go to [http://localhost:8080/](http://localhost:8080/)
+
+## Assignment Write-up
 This module is a Tic-Tac-Toe game played in the browser, completed as part of a [course](http://arch-joelross.rhcloud.com/) at the UW ISchool. 
 
 The below questions should be answered (in detail!) regarding your submission!
